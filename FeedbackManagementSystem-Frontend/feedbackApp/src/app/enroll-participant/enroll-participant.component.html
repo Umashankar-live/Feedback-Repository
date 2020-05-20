@@ -1,0 +1,85 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
+        <ul class="sidenav admin-sidenav list-unstyled">
+          <li><a (click)="clickOnAddTrainingProgram()">Add Training Program</a></li>
+          <li><a (click)="clickOfListTrainingProgram()">Show Training Programs</a></li>
+          <li><a (click)="clickOnAddParticipantEnrolled()">Enroll Participant</a></li>
+          <li><a (click)="clickOfListParticipantEnrolled()">Show Enrolled Participants</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+          <!-- <li><a href="#">NavLink 6</a></li>                   -->
+        </ul>
+      </div>
+      <!-- Enter the code here -->
+      <div id="admin-main-control" class="col-md-10 p-x-3 p-y-1">
+
+
+        <!-- Enter the code here -->
+        <div>
+
+          <table class="table table-striped custab">
+            <h4>Available Training Programs</h4>
+            <label><b>Selected Training Program</b> :{{selectedTrainingProgram}}</label>
+            <tr>
+              <th>Course Name </th>
+              <th>Faculty Name</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Action</th>
+
+            </tr>
+            <tr *ngFor="let c of trainingList">
+              <td>{{c.courseName}}</td>
+              <td>{{c.facultyName}}</td>
+              <td>{{c.startDate}}</td>
+              <td>{{c.endDate}}</td>
+
+              <td><button class="btn btn-success" (click)="addTraining(c.trainingCode,c.courseName)">Add Training
+                  Program</button></td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+
+          <table class="table table-striped custab">
+            <h4>Participants</h4>
+            <label><b>Selected Participant</b> :{{selectedParticipant}}</label>
+            <tr>
+              <th>Participant Name </th>
+              <!-- <th>Role</th> -->
+              <th>Action</th>
+
+            </tr>
+            <tr *ngFor="let e of employeeList">
+              <td>{{e.employeeName}}</td>
+              <!-- <td>{{e.role}}</td> -->
+              <td><button class="btn btn-success" (click)="addparticipant(e.employeeId,e.employeeName)">Add
+                  Participant</button></td>
+            </tr>
+          </table>
+        </div>
+
+        <form (ngSubmit)="enrollParticipant()" #addtrainingForm=ngForm>
+          <div>
+            <button class="btn btn-primary" type="submit">Enroll Participant</button>
+          </div>
+        </form>
+        <!--   -->
+      </div>
+    </div>
+  </div> <!-- /.container-fluid -->
+</body>

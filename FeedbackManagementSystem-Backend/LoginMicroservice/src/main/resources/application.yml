@@ -1,0 +1,26 @@
+server:
+  port: 8035
+ 
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+    healthcheck:
+      enabled: true
+    
+
+ 
+
+spring:
+  application:
+    name: login-microservice
+
+ 
+
+logging:
+  level:
+   com.cg: DEBUG

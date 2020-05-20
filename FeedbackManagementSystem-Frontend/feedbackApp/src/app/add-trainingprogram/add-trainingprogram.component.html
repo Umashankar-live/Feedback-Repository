@@ -1,0 +1,109 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
+        <ul class="sidenav admin-sidenav list-unstyled">
+          <li><a (click)="clickOnAddTrainingProgram()">Add Training Program</a></li>
+          <li><a (click)="clickOfListTrainingProgram()">Show Training Programs</a></li>
+          <li><a (click)="clickOnAddParticipantEnrolled()">Enroll Participant</a></li>
+          <li><a (click)="clickOfListParticipantEnrolled()">Show Enrolled Participants</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+          <!-- <li><a href="#">NavLink 6</a></li>                   -->
+        </ul>
+      </div>
+      <!-- Enter the code here -->
+      <div id="admin-main-control" class="col-md-10 p-x-3 p-y-1">
+
+
+        <!-- Enter the code here -->
+
+
+        <div>
+          
+          <table class="table table-striped custab">
+            <h4>Select a Course</h4>
+          <label><b>Selected Course</b> :{{selectedCourse}}</label>
+            <tr>
+              <th>Course Id </th>
+              <th>Course Name </th>
+              <th>No of Days</th>
+              <th>Add Course</th>
+
+            </tr>
+            <tr *ngFor="let c of courses; let i =index">
+              <td>{{c.courseId}}</td>
+              <td>{{c.courseName}}</td>
+              <td>{{c.noOfDays}}</td>
+              <td><button class="btn btn-success" (click)="addCourse(c.courseId,c.courseName)">Add Course</button></td>
+            </tr>
+          </table>
+        </div>
+
+        <div>
+          
+          <table class="table table-striped custab">
+            <h4>Select a Faculty</h4>
+          <label><b>Selected Faculty</b> :{{selectedFaculty}}</label>
+            <tr>
+              <th>Faculty Id </th>
+              <th>Faculty Name </th>
+              <th>Skills</th>
+              <th>Add Faculty</th>
+
+            </tr>
+            <tr *ngFor="let f of faculty; let i =index">
+              <td>{{f.facultyId}}</td>
+              <td>{{f.facultyName}}</td>
+              <td>{{f.skills}}</td>
+              <td><button class="btn btn-success" (click)="addFaculty(f.facultyId,f.facultyName)">Add Faculty</button></td>
+            </tr>
+          </table>
+        </div>
+
+        <form (ngSubmit)="savetrainingProgram()" #addtrainingForm=ngForm>
+          <div>
+            <table>
+              <tr>
+                <td>
+                  <h5>Enter Start Date</h5>
+                </td>
+                <td>
+                  <input type="date" name="Start Date" class="form-control" [(ngModel)]="trainingProgramDate.startDate"
+                    placeholder="Enter Start Date" #startdate="ngModel">
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h5>Enter End Date</h5>
+                </td>
+                <td>
+                  <input type="date" name="end Date" class="form-control" [(ngModel)]="trainingProgramDate.endDate"
+                    placeholder="Enter end Date" #enddate="ngModel">
+                  <div class="alert alert-danger" *ngIf="trainingProgramDate.startDate>trainingProgramDate.endDate">
+                    End Date Invalid
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div><br>
+            <button class="btn btn-primary" type="submit">Add Training Program</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div> <!-- /.container-fluid -->
+</body>

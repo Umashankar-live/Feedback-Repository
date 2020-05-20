@@ -1,0 +1,82 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+  
+  <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet"/>
+  </head>
+  <body>
+      <div class="container-fluid">
+          <div class="row">    
+              <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
+                  <ul class="sidenav admin-sidenav list-unstyled">
+                      <li><a (click)="clickOnAddCourse()">Add Course</a></li>
+                      <li><a (click)="clickOnListCourse()">Show Courses</a></li>
+                      <li><a (click)="clickOnAddFaculty()">Add Faculty</a></li>
+                      <li><a (click)="clickOnListFaculty()">Show Faculties</a></li>
+                      <li><a (click)="clickOnRegister()">Register</a></li>
+                      <li><a (click)="logout()">Logout</a></li>
+                      <!-- <li><a href="#">NavLink 6</a></li>                   -->
+                  </ul>
+            </div>
+            <!-- Enter the code here -->
+           
+            <form (ngSubmit) = "saveEmployee(); addCourseForm.reset()" #addCourseForm=ngForm>
+              <div>
+                <table class="table table-striped ">
+                  <tr>
+                    <td><label>User-Name </label></td>
+                    <td>
+                      <input name="username" class="form-control" 
+                      [(ngModel)]=emp.employeeName
+                      placeholder="Enter Name" 
+                      required pattern="([A-z0-9À-ž\s]){2,}" 
+                      #username=ngModel>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label> Password </label></td>
+                    <td>
+                      <input type="password" name="password" class="form-control" 
+                      [(ngModel)]=emp.password 
+                      placeholder="Enter password" 
+                      required pattern= "[A-Za-z0-9]{4,}" 
+                      #password= ngModel>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label> Role </label></td>
+                    <td>
+                      <!-- <input type="text" name="role" class="form-control" 
+                      [(ngModel)]=emp.role 
+                      placeholder="Enter role" 
+                      required pattern= "[A-Za-z0-9]{4,}" 
+                      #role = ngModel> -->
+                      <select  name="role" [(ngModel)]="emp.role" #role = ngModel > 
+                        <option value="null" disabled>Select Role</option>
+                        <option value="admin">admin</option>
+                        <option value="participant">participant</option>
+                        <option value="coordinator">coordinator</option>
+                        
+                      </select>
+                    </td>
+                  </tr>
+                
+                </table>
+              </div>
+              <div>
+                <button class="btn btn-primary" type="submit" [disabled] = "!addCourseForm.valid">Add Employee</button>
+              </div>
+            </form> 
+
+          </div> 
+      </div> <!-- /.container-fluid -->
+  </body>
+
+
+
+
+
+
+

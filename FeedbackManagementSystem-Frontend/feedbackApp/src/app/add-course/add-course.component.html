@@ -1,0 +1,98 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+  
+  <head>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css" rel="stylesheet"/>
+  </head>
+  <body>
+      <div class="container-fluid">
+          <div class="row">    
+              <div id="admin-sidebar" class="col-md-2 p-x-0 p-y-3">
+                  <ul class="sidenav admin-sidenav list-unstyled">
+                      <li><a (click)="clickOnAddCourse()">Add Course</a></li>
+                      <li><a (click)="clickOnListCourse()">Show Courses</a></li>
+                      <li><a (click)="clickOnAddFaculty()">Add Faculty</a></li>
+                      <li><a (click)="clickOnListFaculty()">Show Faculties</a></li>
+                      <li><a (click)="clickOnRegister()">Register</a></li>
+                      <li><a (click)="logout()">Logout</a></li>
+                      <!-- <li><a href="#">NavLink 6</a></li>                   -->
+                  </ul>
+            </div>
+            <!-- Enter the code here -->
+           
+            <form (ngSubmit) = "saveCourse(); addCourseForm.reset()" #addCourseForm=ngForm>
+              <div>
+                <table class="table table-striped ">
+                  <tr>
+                    <td><label> Course Name </label></td>
+                    <td>
+                      <input name="courseName" class="form-control" 
+                      [(ngModel)]=course.courseName 
+                      placeholder="Enter Course Name" 
+                      required pattern="([A-z0-9À-ž\s]){2,}" 
+                      #courseName=ngModel>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label> No of Days </label></td>
+                    <td>
+                      <input type="number" name="noOfDays" class="form-control" 
+                      [(ngModel)]=course.noOfDays 
+                      placeholder="Enter No of Days" 
+                      required pattern= "[0-9]{1,3}" 
+                      #noOfDays = ngModel>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <div>
+                <button class="btn btn-primary" type="submit" [disabled] = "!addCourseForm.valid">Add Course</button>
+              </div>
+            </form> 
+
+          </div> 
+      </div> <!-- /.container-fluid -->
+  </body>
+
+
+
+
+
+
+
+<!-- <div class="text-right">
+  <nav>
+    <button (click)="redirectToAdmin()">Back to Admin</button>
+  </nav>
+</div>
+<form (ngSubmit) = "saveCourse(); addCourseForm.reset()" #addCourseForm=ngForm>
+  <div>
+    <table class="table table-striped table-dark">
+      <tr>
+        <td><label> Course Name </label></td>
+        <td>
+          <input name="courseName" class="form-control" 
+          [(ngModel)]=course.courseName 
+          placeholder="Enter Course Name" 
+          required pattern="([A-z0-9À-ž\s]){2,}" 
+          #courseName=ngModel>
+        </td>
+      </tr>
+      <tr>
+        <td><label> No of Days </label></td>
+        <td>
+          <input type="number" name="noOfDays" class="form-control" 
+          [(ngModel)]=course.noOfDays 
+          placeholder="Enter No of Days" 
+          required pattern= "[0-9]{1,3}" 
+          #noOfDays = ngModel>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <button class="btn btn-dark" type="submit" [disabled] = "!addCourseForm.valid">Add Course</button>
+  </div>
+</form> -->
